@@ -914,10 +914,9 @@ Board.prototype.toggleButtons = function() {
 
 
 
-      let navbarHeight = document.getElementById("navbarDiv").clientHeight;
-      let textHeight = document.getElementById("mainText").clientHeight + document.getElementById("algorithmDescriptor").clientHeight;
-      let height = Math.floor((document.documentElement.clientHeight - navbarHeight - textHeight) / 28);
-      let width = Math.floor(document.documentElement.clientWidth / 25);
+      let dimensions = getBoardDimensions();
+      let height = dimensions.height;
+      let width = dimensions.width;
       let start = Math.floor(height / 2).toString() + "-" + Math.floor(width / 4).toString();
       let target = Math.floor(height / 2).toString() + "-" + Math.floor(3 * width / 4).toString();
 
@@ -1098,10 +1097,21 @@ Board.prototype.toggleButtons = function() {
 
 }
 
-let navbarHeight = $("#navbarDiv").height();
-let textHeight = $("#mainText").height() + $("#algorithmDescriptor").height();
-let height = Math.floor(($(document).height() - navbarHeight - textHeight) / 28);
-let width = Math.floor($(document).width() / 25);
+function getBoardDimensions() {
+  let navbarHeight = document.getElementById("navbarDiv").clientHeight;
+  let descriptorHeight = document.getElementById("algorithmDescriptor").clientHeight;
+  let mainGridWidth = document.getElementById("mainGrid").clientWidth;
+  let sidebarWidth = document.getElementById("mainText").clientWidth;
+  let availableHeight = window.innerHeight - navbarHeight - descriptorHeight - 24;
+  let availableWidth = mainGridWidth - sidebarWidth - 14;
+  let height = Math.max(5, Math.floor(availableHeight / 28));
+  let width = Math.max(5, Math.floor(availableWidth / 25));
+  return { height, width };
+}
+
+let initialDimensions = getBoardDimensions();
+let height = initialDimensions.height;
+let width = initialDimensions.width;
 let newBoard = new Board(height, width)
 newBoard.initialise();
 

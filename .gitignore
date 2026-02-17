@@ -1,0 +1,52 @@
+﻿# Node dependencies
+node_modules/
+Algorithm Visualizer/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build / coverage artifacts
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Cache / temp
+.cache/
+.tmp/
+tmp/
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Runtime / pid
+*.pid
+*.pid.lock
+
+# Optional archives
+*.zip
+*.tar
+*.gz
+
+# Local docs or notes you may not want tracked
+*.log
